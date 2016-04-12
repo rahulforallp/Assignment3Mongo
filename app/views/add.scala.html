@@ -1,0 +1,36 @@
+@(addForm:Form[(String,String,String,String,String,String)],loginForm:Form[(String,String)])(implicit msg:Messages, flash: Flash)
+@views.html.main("Add user data"){
+<center>
+    <h1>Sign In</h1>
+    <br><br>##########################################################################################################<br><br>
+
+    <div id ="loginemployee">
+    @helper.form(action=routes.EmployeeController.validate(),'id->"loginForm") {
+    @helper.inputText(loginForm("name"), '_label -> "UserName",'placeholder -> "UserName",'id -> "id" )
+    @helper.inputPassword(loginForm("password"), '_label -> "Password",'placeholder -> "Password",'id -> "password" )
+    @flash.get("error")
+    <center> <input class= "btn btn-primary" type="submit" value="Submit"/></center>
+    }
+</div>
+<br><br>##########################################################################################################<br><br>
+<h1>Sign UP</h1>
+    <br><br>##########################################################################################################<br><br>
+<div>
+    @helper.form(action=routes.EmployeeController.register(),'id->"addForm") {
+    @helper.inputText(addForm("name"), '_label -> "UserName",'placeholder -> "UserName",'id -> "name" )
+    @helper.inputPassword(addForm("password"), '_label -> "Password",'placeholder -> "Password",'id -> "password" )
+    @helper.inputText(addForm("address"), '_label -> "Address", 'placeholder -> "Address" ,'id -> "address")
+    @helper.inputText(addForm("dob"), '_label -> "Date Of Birth",'placeholder -> "Date Of Birth",'id -> "dob" )
+    @helper.inputText(addForm("joiningDate"), '_label -> "Joining", 'placeholder -> "Joining Date", 'id -> "joiningDate" )
+    @helper.inputText(addForm("designation"), '_label -> "Designation", 'placeholder -> "Designation", 'id -> "designation" )
+    @flash.get("error")
+    <input class= "btn btn-primary" type="submit" value="Submit"/>
+    }
+</div>
+</center>
+
+
+
+
+}
+
